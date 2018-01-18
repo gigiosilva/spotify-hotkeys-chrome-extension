@@ -1,25 +1,22 @@
 function onCommand(command) {
-  chrome.tabs.query({url: 'https://*.spotify.com/*'}, function(tabs) {
+  chrome.tabs.query({url: 'https://www.youtube.com/*'}, function(tabs) {
 
-    // Open a spotify tab if one does not exist yet.
+    // Open a youtube tab if one does not exist yet.
     if (tabs.length === 0) {
-      chrome.tabs.create({url: 'https://open.spotify.com'});
+      chrome.tabs.create({url: 'https://www.youtube.com'});
     }
 
-    // Apply command on all spotify tabs.
+    // Apply command on all youtube tabs.
     for (var tab of tabs) {
+        console.log(tab.url)
 
       var code = '';
-      if (tab.url.startsWith('https://play.spotify.com')) {
-        code = "document.getElementById('app-player').contentDocument.getElementById('" + command + "').click()";
-      } else if (tab.url.startsWith('https://open.spotify.com')) {
+      if (tab.url.startsWith('https://www.youtube.com')) {
         switch (command) {
-          case 'next': code = 'document.querySelector(".spoticon-skip-forward-16").click()'; break;
-          case 'previous': code = 'document.querySelector(".spoticon-skip-back-16").click()'; break;
-          case 'shuffle': code = 'document.querySelector(".spoticon-shuffle-16").click()'; break;
-          case 'repeat': code = 'document.querySelector(".spoticon-repeat-16").click()'; break;
-          case 'track-add': code = '(document.querySelector(".spoticon-add-16") || document.querySelector(".spoticon-added-16")).click()'; break;
-          case 'play-pause': code = '(document.querySelector(".spoticon-play-16") || document.querySelector(".spoticon-pause-16")).click()'; break;
+          case 'next': code = 'document.querySelector(".ytp-next-button").click()'; break;
+          case 'previous': code = 'document.querySelector(".ytp-prev-button").click()'; break;
+          case 'play-pause': code = 'document.querySelector(".ytp-play-button").click()'; break;
+          case 'mute-unmute': code = 'document.querySelector(".ytp-mute-button").click()'; break;
         }
       }
       if (code.length) {

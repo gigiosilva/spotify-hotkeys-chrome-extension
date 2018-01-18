@@ -1,6 +1,6 @@
-Spotify Web Player Hotkeys Chrome Extension
-===========================================
+# YouTube Hotkeys Chrome Extension
 
-Spotify Web Player Hotkeys is a Chrome Extension that adds keyboard shortcuts to Chrome to pause, play next and previous tracks in [Spotify Web Player](https://play.spotify.com).
+YouTube Hotkeys is a Chrome Extension that adds keyboard shortcuts to Chrome to pause, play next and previous tracks in ## YouTube
+(https://www.youtube.com/).
 
-You can find the official Chrome Extension in the Chrome Web Store at https://chrome.google.com/webstore/detail/kimlaecdbfehihbiieeaeelbdkahophn
+<!-- You can find the official Chrome Extension in the Chrome Web Store at https://chrome.google.com/webstore/detail/kimlaecdbfehihbiieeaeelbdkahophn -->

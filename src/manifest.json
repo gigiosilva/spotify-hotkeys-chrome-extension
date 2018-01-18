@@ -1,39 +1,45 @@
 {
-   "name": "Spotify Web Player Hotkeys",
-   "description": "Add keyboard shortcuts to pause, play next and previous tracks in Spotify",
-   "version": "0.5.2",
-   "manifest_version": 2,
-   "icons": {
-      "128": "icon.png"
-   },
-
-   "incognito": "split",
-   "background": {
+    "manifest_version": 2,
+    "name": "YouTube Hotkeys",
+    "description": "Your YouTube Hotkeys for play, pause and play next video.",
+    "version": "1.0",
+    "incognito": "split",
+    "background": {
       "persistent": false,
-      "scripts": [ "background.js" ]
-   },
-   "commands": {
+      "scripts": ["background.js"]
+    },
+    "commands": {
       "next": {
          "description": "Next track",
          "suggested_key": "Alt+Shift+Period"
       },
       "play-pause": {
-         "description": "Play/pause",
+         "description": "Play/Pause",
          "suggested_key": "Alt+Shift+P"
       },
       "previous": {
          "description": "Previous track",
          "suggested_key": "Alt+Shift+Comma"
       },
-      "shuffle": {
-         "description": "Shuffle"
-      },
-      "repeat": {
-         "description": "Repeat"
-      },
-      "track-add": {
-         "description": "Save track"
-      }
-   },
-   "permissions": [ "https://open.spotify.com/*", "https://play.spotify.com/*" ]
-}
+      "mute-unmute": {
+        "description": "Mute/Unmute",
+        "suggested_key": "Alt+Shift+M"
+     }
+    },
+    "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
+    },
+    "web_accessible_resources": ["script.js"],
+    "permissions": [
+      "tabs",
+      "http://*/*",
+      "https://*/*", 
+      "background",
+      "storage"
+    ],
+    "icons": { "16": "youtubeHIcon.png",
+                "48": "youtubeHIcon.png",
+                "128": "youtubeHIcon.png" 
+    }
+  }
