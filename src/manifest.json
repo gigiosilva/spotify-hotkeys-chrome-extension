@@ -39,7 +39,7 @@
       "http://*/*",
       "https://*/*", 
       "background",
-      "storage"
+      "contentSettings"
     ],
     "icons": { "16": "icon.png",
                 "48": "icon.png",
