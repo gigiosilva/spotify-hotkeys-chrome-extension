@@ -41,8 +41,9 @@
       "background",
       "contentSettings"
     ],
-    "icons": { "16": "assets/icon.png",
-                "48": "assets/icon.png",
-                "128": "assets/icon.png" 
+    "icons": { 
+      "16": "assets/icon.png",
+      "48": "assets/icon.png",
+      "128": "assets/icon.png" 
     }
   }
