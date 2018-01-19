@@ -21,16 +21,19 @@
          "description": "Previous track",
          "suggested_key": "Alt+Shift+Comma"
       },
-      "mute-unmute": {
-        "description": "Mute/Unmute",
-        "suggested_key": "Alt+Shift+M"
-     }
+      "repeat": {
+       "description": "Repeat",
+       "suggested_key": "Alt+Shift+R"
+      }
     },
     "browser_action": {
       "default_icon": "icon.png",
       "default_popup": "popup.html"
     },
-    "web_accessible_resources": ["script.js"],
+    "web_accessible_resources": [
+      "script.js",
+      "content.js"
+    ],
     "permissions": [
       "tabs",
       "http://*/*",
@@ -38,8 +41,8 @@
       "background",
       "storage"
     ],
-    "icons": { "16": "youtubeHIcon.png",
-                "48": "youtubeHIcon.png",
-                "128": "youtubeHIcon.png" 
+    "icons": { "16": "icon.png",
+                "48": "icon.png",
+                "128": "icon.png" 
     }
   }
