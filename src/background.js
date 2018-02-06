@@ -10,25 +10,33 @@ function onCommand(command) {
     for (var tab of tabs) {
 
       var code = '';
+      
       if (tab.url.startsWith('https://www.youtube.com')) {
 
-        chrome.tabs.executeScript(tab.id, {
-          file: 'scripts/content.js'
-        });
-
         switch (command) {
-          case 'next': code = 'document.querySelector(".ytp-next-button").click()'; break;
-          case 'previous': code = 'window.history.back()'; break;
+          case 'next': {
+            chrome.browserAction.setIcon({path:"/assets/icon-mini.png"});
+            code = 'document.querySelector(".ytp-next-button").click()'; break;
+          }
+          case 'previous': {
+            chrome.browserAction.setIcon({path:"/assets/icon-mini.png"});
+            code = 'window.history.back()'; break;
+          } 
           //case 'previous': code = 'document.querySelector(".ytp-prev-button").click()'; break;
           case 'play-pause': code = 'document.querySelector(".ytp-play-button").click()'; break;
           case 'mute-unmute': code = 'document.querySelector(".ytp-mute-button").click()'; break;
           case 'repeat': {
-            code = 'document.querySelector("#ce-repeat").click()';
-            // chrome.browserAction.setIcon({
-            //   path: request.newIconPath,
-            //   tabId: sender.tab.id
-            // });
-            break;
+
+            chrome.tabs.executeScript(tab.id, {code: 'document.querySelector("[role=menuitemcheckbox]").getAttribute("aria-checked")'}, res => {
+              var repeat = JSON.parse(res[0]);
+              if(!repeat) {
+                chrome.browserAction.setIcon({path:"/assets/icon-repeat-mini.png"});
+              } else {
+                chrome.browserAction.setIcon({path:"/assets/icon-mini.png"});
+              }
+            });
+
+            code = 'document.querySelector("[role=menuitemcheckbox] .ytp-menuitem-label").click()'; break;
           }
         }
       }
@@ -38,17 +46,8 @@ function onCommand(command) {
     }
 
     // Unload background page as soon as we're done.
-    window.close();
+    //window.close();
   });
 };
 
 chrome.commands.onCommand.addListener(onCommand);
-
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    // read `newIconPath` from request and read `tab.id` from sender
-    chrome.browserAction.setIcon({
-        path: request.newIconPath,
-        tabId: sender.tab.id
-  });
-});
